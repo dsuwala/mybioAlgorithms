@@ -1,11 +1,24 @@
 #include <gtest/gtest.h>
-#include "t.hpp"
+#include "PairwiseAligner.hpp"
+#include <string>
+#include <vector>
 
-TEST(basicTest, addTest){
+TEST(basicTests, initMethodworks){
 
-  t tes;
-
-  EXPECT_FLOAT_EQ(3.0, tes.add(1.0, 2.0));
-
-
+  std::string s1 = "ACAAG";
+  std::string s2 = "UCGUG";
+  PairwiseAligner aligner(s1, s2);
+  
+  std::vector <std::vector <int> > v = {
+              { 0, -2, -4, -6, -8, -10}, 
+              {-2,  0, 0, 0, 0, 0}, 
+              {-4,  0, 0, 0, 0, 0}, 
+              {-6,  0, 0, 0, 0, 0}, 
+              {-8,  0, 0, 0, 0, 0}, 
+              {-10, 0, 0, 0, 0, 0}, 
+              };
+  
+  aligner.init();
+  
+  EXPECT_EQ(v, aligner.getPenaltyMatrix());
 }
