@@ -6,16 +6,25 @@ void PairwiseAligner::launchNeedlemanWunsh(){
     int M = _seq2.size();
     int left = 0, up = 0, diagonal = 0;
 
+    // matrix filling
+    // seq1 --> i, seq2 --> j
     for (int i = 1; i < N + 1; i++){
-        for (int j = 1; i < M + 1; j++){
+        for (int j = 1; j < M + 1; j++){
 
             left = _penaltyMatrix.at(i).at(j - 1) + _gapPenalty;
             up = _penaltyMatrix.at(i - 1).at(j) + _gapPenalty;
-            diagonal = _penaltyMatrix.at(i - 1).at(j - 1) + _seq1.at(i - 1) == _seq2.at(j - 1) ? _match : _mismatch;
+            diagonal = _penaltyMatrix.at(i - 1).at(j - 1) + (_seq1.at(i - 1) == _seq2.at(j - 1) ? _match : _mismatch);
 
             _penaltyMatrix.at(i).at(j) = std::max(std::max(left, up), diagonal);
         }
     }
+    
+    // tracing back
+    // for (int i = N; i > 1; i--){
+    //     for (int j = N; j > 1; j--){
+
+    //     }
+    // }
 
 
 }
