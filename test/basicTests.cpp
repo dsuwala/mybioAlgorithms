@@ -18,7 +18,7 @@ TEST(basicTests, initMethodworks){
               {-10, 0, 0, 0, 0, 0}, 
               };
   
-  aligner.init();
+
   
   EXPECT_EQ(v, aligner.getPenaltyMatrix());
 }

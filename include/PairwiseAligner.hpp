@@ -8,13 +8,10 @@
 class PairwiseAligner{
 
     public: 
-        PairwiseAligner(std::string &s1, std::string &s2) : _seq1(s1), _seq2(s2) {};
+        PairwiseAligner(std::string &s1, std::string &s2);
         
         void launchNeedlemanWunsh();
         
-        // creates (N + 1)x(M  + 1) matrix filled with zeros with M,N - seq1, seq2 sizes
-        void init();
-
         // std::pair <std::string, std::string> getSeq(){};
         std::vector <std::vector <int>> getPenaltyMatrix() const {return _penaltyMatrix;}
 
