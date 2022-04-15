@@ -22,3 +22,22 @@ TEST(basicTests, initMethodworks){
   
   EXPECT_EQ(v, aligner.getPenaltyMatrix());
 }
+
+TEST(basicTests, matrixFillWorks){
+
+  std::string s1 = "ACA";
+  std::string s2 = "UCG";
+  PairwiseAligner aligner(s1, s2);
+  
+  std::vector <std::vector <int> > v = {
+              { 0, -2, -4, -6}, 
+              {-2,  -1, -3, -5}, 
+              {-4,  -3, 0, -2}, 
+              {-6,  -5, -2, -1}, 
+              };
+
+  aligner.launchNeedlemanWunsh(); 
+
+  
+  EXPECT_EQ(v, aligner.getPenaltyMatrix());
+}
