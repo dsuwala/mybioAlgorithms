@@ -41,3 +41,16 @@ TEST(basicTests, matrixFillWorks){
   
   EXPECT_EQ(v, aligner.getPenaltyMatrix());
 }
+
+TEST(basicTests, needlmanWunshWorks){
+
+  std::string s1 = "TREE";
+  std::string s2 = "REED";
+  PairwiseAligner aligner(s1, s2);
+  
+  aligner.launchNeedlemanWunsh(); 
+
+  
+  EXPECT_EQ("TREE-", aligner.getAlignment1());
+  EXPECT_EQ("-REED", aligner.getAlignment2());
+}

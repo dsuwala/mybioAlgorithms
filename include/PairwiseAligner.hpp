@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <algorithm>
 
 class PairwiseAligner{
 
@@ -14,10 +15,12 @@ class PairwiseAligner{
         
         // std::pair <std::string, std::string> getSeq(){};
         std::vector <std::vector <int>> getPenaltyMatrix() const {return _penaltyMatrix;}
+        std::string getAlignment1() const {return _alignment1;}
+        std::string getAlignment2() const {return _alignment2;}
 
     private:
         std::string _seq1, _seq2;
-        std::string alignment;
+        std::string _alignment1 = "", _alignment2 = "";
         std::vector <std::vector <int>> _penaltyMatrix;
         
         int _gapPenalty = -2;
